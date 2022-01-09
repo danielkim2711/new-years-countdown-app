@@ -16,10 +16,16 @@ function countdown() {
   const mins = Math.floor(totalSeconds / 60) % 60;
   const seconds = Math.floor(totalSeconds) % 60;
 
-  daysEl.innerHTML = days;
-  hoursEl.innerHTML = hours;
-  minsEl.innerHTML = mins;
+  daysEl.innerHTML = formatDays(days);
+  hoursEl.innerHTML = formatTime(hours);
+  minsEl.innerHTML = formatTime(mins);
   secondsEl.innerHTML = formatTime(seconds);
+}
+
+function formatDays(days) {
+  if (days < 100 && days >= 10) return `0${days}`;
+  else if (days < 10) return `00${days}`;
+  else return days;
 }
 
 function formatTime(time) {
